@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Client Area - Law Offices of Pritpal Singh</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://dashboard.pritsinghlaw.com/ca-styles.css">
+</head>
+<body class="bg-light">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="#">Law Offices of Pritpal Singh</a>
+      <button class="btn btn-outline-light ms-auto" id="logoutBtn">Sign out</button>
+    </div>
+  </nav>
+
+  <!-- Main container -->
+  <div id="app" class="container my-4" style="display:none;">
+    <h3 class="mb-3">Welcome, <span id="clientName"></span></h3>
+
+    <!-- Tabs -->
+    <ul class="nav nav-tabs" id="dashTabs" role="tablist">
+      <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#cases">Cases</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#docs">Documents</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#account">Account</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#payments">Payments</button></li>
+    </ul>
+
+    <div class="tab-content p-3 bg-white border border-top-0 rounded-bottom">
+      <!-- Case timeline -->
+      <div class="tab-pane fade show active" id="cases">
+        <ul id="caseTimeline" class="list-group list-group-flush"></ul>
+      </div>
+
+      <!-- Document vault -->
+      <div class="tab-pane fade" id="docs">
+        <div id="docList" class="row g-3"></div>
+        <div class="mt-4">
+          <label class="form-label">Upload new file</label>
+          <input type="file" id="fileInput" class="form-control">
+        </div>
+      </div>
+
+      <!-- Billing & contact -->
+      <div class="tab-pane fade" id="account">
+        <table class="table table-sm" id="billingTable"></table>
+        <form class="mt-4" id="msgForm">
+          <label class="form-label">Send a secure message</label>
+          <textarea class="form-control" id="msgBox" rows="3"></textarea>
+          <button class="btn btn-primary mt-2">Send</button>
+        </form>
+      </div>
+
+      <!-- Payments -->
+      <div class="tab-pane fade" id="payments">
+        <p class="mb-3">Outstanding balance: <span class="fw-bold" id="balance">$0.00</span></p>
+        <button class="btn btn-success" id="payBtn">Pay with Card</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase + Stripe SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-storage-compat.js"></script>
+  <script src="https://js.stripe.com/v3/"></script>
+  <script src="https://dashboard.pritsinghlaw.com/app.js"></script>
+</body>
+</html>
